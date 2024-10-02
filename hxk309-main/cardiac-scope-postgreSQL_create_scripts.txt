@@ -1,0 +1,206 @@
+-- Table: public.cmr_techniques
+
+-- DROP TABLE IF EXISTS public.cmr_techniques;
+
+CREATE TABLE IF NOT EXISTS public.cmr_techniques
+(
+    id integer NOT NULL DEFAULT nextval('cmr_techniques_id_seq'::regclass),
+    cmr_technique character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT cmr_techniques_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.cmr_techniques
+    OWNER to postgres;
+
+
+-- Table: public.genders
+
+-- DROP TABLE IF EXISTS public.genders;
+
+CREATE TABLE IF NOT EXISTS public.genders
+(
+    id integer NOT NULL DEFAULT nextval('genders_id_seq'::regclass),
+    gender character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT genders_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.genders
+    OWNER to postgres;
+
+-- Table: public.publications
+
+-- DROP TABLE IF EXISTS public.publications;
+
+CREATE TABLE IF NOT EXISTS public.publications
+(
+    id integer NOT NULL DEFAULT nextval('publications_id_seq'::regclass),
+    name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    year integer NOT NULL,
+    CONSTRAINT publications_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.publications
+    OWNER to postgres;
+
+-- Table: public.references_table
+
+-- DROP TABLE IF EXISTS public.references_table;
+
+CREATE TABLE IF NOT EXISTS public.references_table
+(
+    id integer NOT NULL DEFAULT nextval('references_table_id_seq'::regclass),
+    publication_ref_id integer,
+    gender_id integer,
+    age_lower integer,
+    age_upper integer,
+    lvedv integer,
+    lvedv_min integer,
+    lvedv_max integer,
+    lvedvi integer,
+    lvedvi_min integer,
+    lvedvi_max integer,
+    lvesv integer,
+    lvesv_min integer,
+    lvesv_max integer,
+    lvesvi integer,
+    lvesvi_min integer,
+    lvesvi_max integer,
+    lvm integer,
+    lvm_min integer,
+    lvm_max integer,
+    lvmi integer,
+    lvmi_min integer,
+    lvmi_max integer,
+    lvsv integer,
+    lvsv_min integer,
+    lvsv_max integer,
+    lvsvi integer,
+    lvsvi_min integer,
+    lvsvi_max integer,
+    lvef integer,
+    lvef_min integer,
+    lvef_max integer,
+    rvedv integer,
+    rvedv_min integer,
+    rvedv_max integer,
+    rvedvi integer,
+    rvedvi_min integer,
+    rvedvi_max integer,
+    rvesv integer,
+    rvesv_min integer,
+    rvesv_max integer,
+    rvesvi integer,
+    rvesvi_min integer,
+    rvesvi_max integer,
+    rvsv integer,
+    rvsv_min integer,
+    rvsv_max integer,
+    rvsvi integer,
+    rvsvi_min integer,
+    rvsvi_max integer,
+    rvm integer,
+    rvm_min integer,
+    rvm_max integer,
+    rvmi integer,
+    rvmi_min integer,
+    rvmi_max integer,
+    rvef integer,
+    rvef_min integer,
+    rvef_max integer,
+    lav_min integer,
+    lav_max integer,
+    lavi_min integer,
+    lavi_max integer,
+    rav_min integer,
+    rav_max integer,
+    ravi_min integer,
+    ravi_max integer,
+    lav_min_exc integer,
+    lav_max_exc integer,
+    lavi_min_exc integer,
+    lavi_max_exc integer,
+    rav_min_exc integer,
+    rav_max_exc integer,
+    ravi_min_exc integer,
+    ravi_max_exc integer,
+    lav_min_inc integer,
+    lav_max_inc integer,
+    lavi_min_inc integer,
+    lavi_max_inc integer,
+    rav_min_inc integer,
+    rav_max_inc integer,
+    ravi_min_inc integer,
+    ravi_max_inc integer,
+    CONSTRAINT references_table_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.references_table
+    OWNER to postgres;
+
+-- Table: public.strain_references
+
+-- DROP TABLE IF EXISTS public.strain_references;
+
+CREATE TABLE IF NOT EXISTS public.strain_references
+(
+    id integer NOT NULL DEFAULT nextval('strain_references_id_seq'::regclass),
+    gender_id integer,
+    cmr_id integer,
+    c_strain_min double precision,
+    c_strain_max double precision,
+    l_strain_min double precision,
+    l_strain_max double precision,
+    CONSTRAINT strain_references_pkey PRIMARY KEY (id),
+    CONSTRAINT strain_references_cmr_id_fkey FOREIGN KEY (cmr_id)
+        REFERENCES public.cmr_techniques (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT strain_references_gender_id_fkey FOREIGN KEY (gender_id)
+        REFERENCES public.genders (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.strain_references
+    OWNER to postgres;
+
+-- Table: public.users
+
+-- DROP TABLE IF EXISTS public.users;
+
+CREATE TABLE IF NOT EXISTS public.users
+(
+    id integer NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+    email character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    first_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    last_name character varying(255) COLLATE pg_catalog."default",
+    city character varying(255) COLLATE pg_catalog."default",
+    country character varying(255) COLLATE pg_catalog."default",
+    hospital_name character varying(255) COLLATE pg_catalog."default",
+    mri_scanner character varying(255) COLLATE pg_catalog."default",
+    analysis_software character varying(255) COLLATE pg_catalog."default",
+    phone_number character varying(20) COLLATE pg_catalog."default",
+    publication_preference integer,
+    CONSTRAINT users_pkey PRIMARY KEY (id),
+    CONSTRAINT fk_publication FOREIGN KEY (publication_preference)
+        REFERENCES public.publications (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.users
+    OWNER to postgres;
+

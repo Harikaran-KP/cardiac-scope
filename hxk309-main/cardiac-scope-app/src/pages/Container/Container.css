@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  display: flex;
+  height: 100vh; 
+  background-color: #f0f0f0;
+  max-width: 100%;
+  padding: 0 !important;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  background-color: #f0f0f0;
+  max-width: 100%;
+  padding: 0 !important;
+}
+
+.toast {
+  position: fixed;
+  top: 10%;
+  left: 80%;
+  height: 2%;
+}

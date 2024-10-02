@@ -1,0 +1,101 @@
+.ecv-calculator-container {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  background-color: #f9f9f9;
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: 15%;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.form-block {
+  margin: 8px 0px 32px 0px;
+  width: 75%;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  width: 50% !important;
+}
+
+.input-block-bar {
+  display: flex;
+  justify-content: flex-start;
+  gap: 60px;
+}
+
+.ecv-calculator-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.result {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}

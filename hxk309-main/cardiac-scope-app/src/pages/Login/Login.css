@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+  margin: auto;
+  padding: 2em;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.mt-3 {
+  align-self: center;
+}
+
+.login-container h1 {
+  margin-bottom: 1em;
+}
+
+.form-group {
+  margin-bottom: 1em;
+}
+
+button {
+  width: 100%;
+}
